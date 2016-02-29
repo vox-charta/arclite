@@ -1,0 +1,7 @@
+#page.with-sidebar .mask-main .col1 {
+	width:100% !important;			/* left column width */
+}
+
+#page.with-sidebar .mask-main .col2 {
+	display: none !important;
+}
