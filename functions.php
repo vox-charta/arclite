@@ -1269,7 +1269,7 @@ function display_vote_info($postID, $userID) {
 				//if ($n == 1 && GetResetTime($disctime) > $disctime) {
 				//	array_push($nextdiscussions, $disctime);
 				//} else {
-					$disctime = $disctime + 86400*AgendaOffset('next', 'co', GetResetTime($disctime) + 1);
+					$disctime = $disctime + 86400*AgendaOffset('next', 'an', GetResetTime($disctime) + 1);
 					array_push($nextdiscussions, GetResetTime($disctime) - 1);
 				//}
 			}
@@ -1566,6 +1566,28 @@ function allow_user_to_edit_comment( $caps, $cap, $user_id, $args ) {
 		}
 	}
 	return $caps;
+}
+
+// Make cookies expire after a longer period.
+add_filter('auth_cookie_expiration', 'my_expiration_filter', 99, 3);
+function my_expiration_filter($seconds, $user_id, $remember){
+
+    //if "remember me" is checked;
+    if ( $remember ) {
+        //WP defaults to 2 weeks;
+        $expiration = 180*24*60*60;
+    } else {
+        //WP defaults to 48 hrs/2 days;
+        $expiration = 2*24*60*60;
+    }
+
+    //http://en.wikipedia.org/wiki/Year_2038_problem
+    if ( PHP_INT_MAX - time() < $expiration ) {
+        //Fix to a little bit earlier!
+        $expiration =  PHP_INT_MAX - time() - 5;
+    }
+
+    return $expiration;
 }
 
 add_filter('map_meta_cap', 'allow_user_to_edit_comment', 10, 4 );

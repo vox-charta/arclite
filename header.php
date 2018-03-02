@@ -151,6 +151,7 @@ onload=setPageSettings;
 <a name="top"></a>
 <?php wp_head(); ?>
 
+<!--
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -174,8 +175,9 @@ onload=setPageSettings;
   });
 </script>
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
 </script>
+-->
 </head>
 <body <?php if (is_home()) { ?>class="home"<?php } else { ?>class="inner"<?php } ?>>
  <!-- page wrap -->
