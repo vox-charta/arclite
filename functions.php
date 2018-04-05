@@ -1590,7 +1590,22 @@ function my_expiration_filter($seconds, $user_id, $remember){
     return $expiration;
 }
 
+function apply_portal() {
+	if (is_page_template('create-portal.php')) {
+		global $reCAPTCHA;	
+
+		require_once('recaptchalib.php');
+
+		$reCAPTCHA = new reCAPTCHA(
+			'6LdGRFEUAAAAAG1fcTRbKBGM2EB6dpCdP50LY5qP',
+			'6LdGRFEUAAAAAD4REqGNsgFabH5wOkCOLblh3ZpQ');
+
+		echo $reCAPTCHA->getScript();
+	}
+}
+
 add_filter('map_meta_cap', 'allow_user_to_edit_comment', 10, 4 );
+add_action('wp_head', 'apply_portal');
 add_action( 'template_redirect', 'my_page_template_redirect' );
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 remove_filter('the_content', 'wptexturize');
