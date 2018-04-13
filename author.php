@@ -34,8 +34,8 @@
 		<?php
 		$vote_count = ($vote_record->votes == '') ? 0 : count(explode(",",$vote_record->votes));
 		$sink_count = ($vote_record->sinks == '') ? 0 : count(explode(",",$vote_record->sinks));
-		echo "<p><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon'>" . $vote_count . " promotions</p>";
-		echo "<p><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon'>" . $sink_count . " demotions</p>";
+		echo "<p><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon'>" . $vote_count . " promotions</p>";
+		echo "<p><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon'>" . $sink_count . " demotions</p>";
 		?>
 		</div>
         <div style="float: left; padding-left: 15px;">
@@ -43,7 +43,7 @@
          if($curauth->user_description<>'') {
 			 echo '<p>'.$curauth->user_description.'</p>';
 		 }
-         if(($curauth->user_url<>'http://') && ($curauth->user_url<>'')) echo '<p class="im">'.__('Homepage:','arclite').' <a href="'.$curauth->user_url.'">'.$curauth->user_url.'</a></p>';
+         if(($curauth->user_url<>'https://') && ($curauth->user_url<>'')) echo '<p class="im">'.__('Homepage:','arclite').' <a href="'.$curauth->user_url.'">'.$curauth->user_url.'</a></p>';
          if($curauth->yim<>'') echo '<p class="im">'.__('Yahoo Messenger:','arclite').' <a class="im_yahoo" href="ymsgr:sendIM?'.$curauth->yim.'">'.$curauth->yim.'</a></p>';
          if($curauth->jabber<>'') echo '<p class="im">'.__('Jabber/GTalk:','arclite').' <a class="im_jabber" href="gtalk:chat?jid='.$curauth->jabber.'">'.$curauth->jabber.'</a></p>';
          if($curauth->aim<>'') echo '<p class="im">'.__('AIM:','arclite').' <a class="im_aim" href="aim:goIM?screenname='.$curauth->aim.'">'.$curauth->aim.'</a></p>';

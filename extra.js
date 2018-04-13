@@ -305,11 +305,11 @@ function toggleSidebar(logged_in, nonce){
 	inner = '<a href="javascript:;" onclick="toggleSidebar('+logged_in+', \''+nonce+'\');">Show';
 	toggle = '0';
   }
-  inner += ' Sidebar</a> | <a href="http://voxcharta.org/wp-login.php';
+  inner += ' Sidebar</a> | <a href="https://voxcharta.org/wp-login.php';
   if (logged_in) {
-  	inner += '?action=logout&_wpnonce='+nonce+'">Log out</a> | <a href="http://voxcharta.org/wp-admin/">Site admin</a>';
+  	inner += '?action=logout&_wpnonce='+nonce+'">Log out</a> | <a href="https://voxcharta.org/wp-admin/">Site admin</a>';
   } else {
-  	inner += '">Log in</a> | <a href="http://voxcharta.org/wp-login.php?action=register">Register</a>';
+  	inner += '">Log in</a> | <a href="https://voxcharta.org/wp-login.php?action=register">Register</a>';
   }
   document.getElementById('sidebartoggle').innerHTML = inner;
   set_cookie('showsidebar',toggle,365,'/','.voxcharta.org','');

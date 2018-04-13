@@ -57,8 +57,8 @@
 		}
 		?>
 		</div>
-		<p><img src="http://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png" class="voteicon"> <?php echo $num_votes; ?> promotions received.
-		<p><img src="http://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png" class="voteicon"> <?php echo $num_sinks; ?> demotions received.
+		<p><img src="https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png" class="voteicon"> <?php echo $num_votes; ?> promotions received.
+		<p><img src="https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png" class="voteicon"> <?php echo $num_sinks; ?> demotions received.
 		</div></div>
 		<div class="boxfootr"><div class="boxfootl"></div></div>
         <?php if (have_posts()) { ?>

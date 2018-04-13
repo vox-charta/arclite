@@ -9,7 +9,7 @@ $ishome = (is_home()) ? 1 : 0;
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php //language_attributes(); ?>>
 
-<head profile="http://gmpg.org/xfn/11">
+<head profile="https://gmpg.org/xfn/11">
 
 <?php
 $mobile = wpmd_is_phone();
@@ -194,7 +194,7 @@ onload=setPageSettings;
       <h1 class="logo"><a href="<?php get_option("siteurl") ?>/"><img src="<?php print get_option('arclite_logoimage'); ?>"
 		  title="<?php bloginfo('name');  ?>" alt="<?php bloginfo('name');  ?>" style="position: absolute; top: 14px; left: 13px;"/></a></h1><br clear=all>
 	  <div id="pagehead">
-	  <h5>ArXiv discussions for <a href="http://<?php echo $institution->subdomain; ?>.voxcharta.org/tools/institution-stats/" class="titlelink"><?php
+	  <h5>ArXiv discussions for <a href="https://<?php echo $institution->subdomain; ?>.voxcharta.org/tools/institution-stats/" class="titlelink"><?php
 	    $ci = count($institutions);
 	  	$showmax = 5;
 	    echo $ci;
@@ -233,12 +233,12 @@ onload=setPageSettings;
 	  <select name="scheduledrop" onchange="
 	  	set_cookie('schedule_affiliation',this.options[this.selectedIndex].value,365,'/','.voxcharta.org','');
 	    var url = location.href;
-		var regex = new RegExp('http://(.+)\.voxcharta\.');
+		var regex = new RegExp('https://(.+)\.voxcharta\.');
 		if (url.match(regex)) {
-			url = url.replace(regex, 'http://'+this.options[this.selectedIndex].value+'.voxcharta.');
+			url = url.replace(regex, 'https://'+this.options[this.selectedIndex].value+'.voxcharta.');
 		} else {
-			regex = new RegExp('http://');
-			url = url.replace(regex, 'http://'+this.options[this.selectedIndex].value+'.');
+			regex = new RegExp('https://');
+			url = url.replace(regex, 'https://'+this.options[this.selectedIndex].value+'.');
 		}
 	    location.href = url.toLowerCase();
 	  ">
@@ -296,9 +296,9 @@ onload=setPageSettings;
          <?php
           if((get_option('show_on_front')<>'page') && (get_option('arclite_topnav')<>'categories')) {
            if(is_home() && !is_paged()){ ?>
-            <li id="nav-homelink" class="current_page_item"><a class="fadeThis" href="<?php echo 'http://' . $institution->subdomain . '.voxcharta.org'; ?>" title="<?php _e('You are Home','arclite'); ?>"><span><?php _e('Home','arclite'); ?></span></a></li>
+            <li id="nav-homelink" class="current_page_item"><a class="fadeThis" href="<?php echo 'https://' . $institution->subdomain . '.voxcharta.org'; ?>" title="<?php _e('You are Home','arclite'); ?>"><span><?php _e('Home','arclite'); ?></span></a></li>
            <?php } else { ?>
-            <li id="nav-homelink"><a class="fadeThis" href="<?php echo 'http://' . $institution->subdomain . '.voxcharta.org'; ?>" title="<?php _e('Click for Home','arclite'); ?>"><span><?php _e('Home','arclite'); ?></span></a></li>
+            <li id="nav-homelink"><a class="fadeThis" href="<?php echo 'https://' . $institution->subdomain . '.voxcharta.org'; ?>" title="<?php _e('Click for Home','arclite'); ?>"><span><?php _e('Home','arclite'); ?></span></a></li>
           <?php
            }
           } ?>
@@ -339,7 +339,7 @@ onload=setPageSettings;
 } else {
 	echo 'Show';
 }
-echo ' Sidebar</a> | <a href="http://'.$institution->subdomain.'.voxcharta.org/wp-login.php?redirect_to='.$_SERVER['REQUEST_URI'];
-echo (is_user_logged_in()) ? '&action=logout&_wpnonce='.wp_create_nonce('log-out').'">Log out</a> | <a href="http://'.$institution->subdomain.'.voxcharta.org/wp-admin/">Site admin' : '">Log in</a> | <a href="http://'.$institution->subdomain.'.voxcharta.org/wp-login.php?action=register&affiliation='.$institution->name.'">Register';
+echo ' Sidebar</a> | <a href="https://'.$institution->subdomain.'.voxcharta.org/wp-login.php?redirect_to='.$_SERVER['REQUEST_URI'];
+echo (is_user_logged_in()) ? '&action=logout&_wpnonce='.wp_create_nonce('log-out').'">Log out</a> | <a href="https://'.$institution->subdomain.'.voxcharta.org/wp-admin/">Site admin' : '">Log in</a> | <a href="https://'.$institution->subdomain.'.voxcharta.org/wp-login.php?action=register&affiliation='.$institution->name.'">Register';
 echo '</a>';
 ?></div></div></div>

@@ -67,6 +67,7 @@ function mobile_device_detect($iphone=true,$ipad=true,$android=true,$opera=true,
       $status = 'Palm';
       if(substr($palm,0,4)=='http'){ 
         $mobileredirect = $palm; 
+
       } 
     break; 
 
@@ -436,8 +437,8 @@ function get_post_meta_data($posts) {
 		$pmd = '';
 		$pmd .= '<p>'.$authors.'</p><p>';
 		$pmd .= 'ArXiv #: <a href="'.$permalink.'">'.$arxivid.'</a> (';
-		$pmd .= '<a href="http://'.$chstr.'arxiv.org/pdf/'.$arxivid.'">PDF</a>, ';
-		$pmd .= '<a href="http://'.$chstr.'arxiv.org/ps/'.$arxivid.'">PS</a>, ';
+		$pmd .= '<a href="https://'.$chstr.'arxiv.org/pdf/'.$arxivid.'">PDF</a>, ';
+		$pmd .= '<a href="https://'.$chstr.'arxiv.org/ps/'.$arxivid.'">PS</a>, ';
 		$ads_url = 'http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:'.$arxivid;
 		$pmd .= '<a href="'.$ads_url.'">ADS</a>, ';
 		if (time() - strtotime($post->post_date) > 3*3600) {
@@ -445,7 +446,7 @@ function get_post_meta_data($posts) {
 		} else {
 			$pmd .= '<a href="papers://url/'.rawurlencode($permalink).'&title='.rawurlencode($post->post_title).'&selectedText='.rawurlencode($permalink).'&identifier='.rawurlencode($arxivid).'">Papers</a>, ';
 		}
-		$pmd .= '<a href="http://'.$chstr.'arxiv.org/format/'.$arxivid.'">Other</a>)</p>';
+		$pmd .= '<a href="https://'.$chstr.'arxiv.org/format/'.$arxivid.'">Other</a>)</p>';
 		if ($comments != '') {
 			$pmd .= '<p>Comments: '.$comments.'</p>';
 		}
@@ -1211,8 +1212,8 @@ function display_vote_info($postID, $userID) {
 		} else {
 			$votelink = "href=\"javascript:vote('votecount{$postID}','Voted!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\"";
 			$sinklink = "href=\"javascript:sink('votecount{$postID}','Voted!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\"";
-			echo "<a {$votelink}><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon' alt='Promote this paper'><span class='votelinkspace'></span>Promote</a>&nbsp;";
-			echo "<a {$sinklink}><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon' alt='Demote this paper'><span class='votelinkspace'></span>Demote</a></span>";
+			echo "<a {$votelink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon' alt='Promote this paper'><span class='votelinkspace'></span>Promote</a>&nbsp;";
+			echo "<a {$sinklink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon' alt='Demote this paper'><span class='votelinkspace'></span>Demote</a></span>";
 			if (time() > $close_time  && $institution->closevoting == 1) { 
 				$disc_time = GetResetTime($disc_end_time + 86400*AgendaOffset('next', 'co', $disc_end_time+1));
 				echo "<br><span class='voteclosed'>Note: Voting has closed, votes will count towards the ".date("n/j/Y", $disc_time)." discussion.</span><br>";
@@ -1227,10 +1228,10 @@ function display_vote_info($postID, $userID) {
 		$next_coffee = AgendaOffset('next', 'co', $last_vote_time + 60*$institution->closedelay);
 		$bump_time = GetResetTime($last_vote_time + 60*$institution->closedelay + 86400*$next_coffee);
 		if ($user_voted == 1) {
-			echo "<img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon'>";
+			echo "<img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon'>";
 			echo "You promoted this paper";
 		} elseif ($user_voted == 2) {
-			echo "<img src='http://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon'>";
+			echo "<img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon'>";
 			echo "You demoted this paper";
 		}
 		$user_committed = UserCommitted($postID,$userID);
@@ -1239,23 +1240,23 @@ function display_vote_info($postID, $userID) {
 			if (!$user_committed) {
 				echo "<div><b>You discussed this previously!</b></div>";
 			//	echo "<div><a href=\"javascript:present('votecount{$postID}','Done!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\">";
-			//	echo "<img src='http://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
+			//	echo "<img src='https://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
 			//	echo "Mark as presented</a></div>";
 			} else {
-				echo "<div><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
+				echo "<div><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
 				echo "<b>You presented this previously!</b></div>";
 			}
 			echo "<div><a href=\"javascript:bump('votecount{$postID}','Done!',{$postID},{$userID},'".VoteItUp_ExtPath()."');\">";
-			echo "<img src='http://voxcharta.org/wp-content/plugins/vote-it-up/bump.png' class='voteicon'><span class='votelinkspace'></span>";
+			echo "<img src='https://voxcharta.org/wp-content/plugins/vote-it-up/bump.png' class='voteicon'><span class='votelinkspace'></span>";
 			echo "Bump vote to next discussion</a></div>";
 		} else {
 			if (strtolower($user_inst) != 'unaffiliated') {
 				if (!$user_committed) {
 					echo "<div><a href=\"javascript:present('votecount{$postID}','Done!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\">";
-					echo "<img src='http://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
+					echo "<img src='https://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
 					echo "Commit to present</a></div>";
 				} else {
-					echo "<div><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
+					echo "<div><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/present.png' class='voteicon'>";
 					echo "You're presenting this paper</div>";
 				}
 			}
@@ -1276,7 +1277,7 @@ function display_vote_info($postID, $userID) {
 			$nextdiscussions = array_values(array_unique($nextdiscussions));
 			if (strtolower($user_inst) != 'unaffiliated') {
 				echo "<form style='font-size: x-small;'>";
-				echo "<div><img src='http://voxcharta.org/wp-content/plugins/vote-it-up/calendar.gif' class='voteicon'>";
+				echo "<div><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/calendar.gif' class='voteicon'>";
 				echo ($user_committed) ? "Present on " : "Discuss on ";
 				echo "<select name='datesel' id='datesel{$postID}' class='regular-text' onchange=\"javascript:changedate('votecount{$postID}','Done!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\">";
 				foreach ($nextdiscussions as $nd) {
@@ -1288,7 +1289,7 @@ function display_vote_info($postID, $userID) {
 				echo "</select></form></div>";
 			}
 			echo "<div><a href=\"javascript:unvote('votecount{$postID}','Done!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\">
-				  <img src='http://voxcharta.org/wp-content/plugins/vote-it-up/icon_remove.png' class='voteicon' alt='Remove your vote and commitment'><span class='votelinkspace'></span>Remove Vote";
+				  <img src='https://voxcharta.org/wp-content/plugins/vote-it-up/icon_remove.png' class='voteicon' alt='Remove your vote and commitment'><span class='votelinkspace'></span>Remove Vote";
 			if ($user_committed) echo " and Commitment";
 			echo "</a></div>";
 		}
@@ -1519,7 +1520,7 @@ function my_page_template_redirect()
 	$institution = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}votes_institutions WHERE name='{$schedaffil}'");
 
 	if (count($url_parts) == 2) {
-		$newloc = "Location: http://{$institution->subdomain}.voxcharta.org{$_SERVER['REQUEST_URI']}";
+		$newloc = "Location: https://{$institution->subdomain}.voxcharta.org{$_SERVER['REQUEST_URI']}";
 		header( $newloc );
 	}
 
@@ -1581,7 +1582,7 @@ function my_expiration_filter($seconds, $user_id, $remember){
         $expiration = 2*24*60*60;
     }
 
-    //http://en.wikipedia.org/wiki/Year_2038_problem
+    //https://en.wikipedia.org/wiki/Year_2038_problem
     if ( PHP_INT_MAX - time() < $expiration ) {
         //Fix to a little bit earlier!
         $expiration =  PHP_INT_MAX - time() - 5;
@@ -1603,7 +1604,6 @@ function apply_portal() {
 		echo $reCAPTCHA->getScript();
 	}
 }
-
 add_filter('map_meta_cap', 'allow_user_to_edit_comment', 10, 4 );
 add_action('wp_head', 'apply_portal');
 add_action( 'template_redirect', 'my_page_template_redirect' );
