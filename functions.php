@@ -1604,8 +1604,31 @@ function apply_portal() {
 		echo $reCAPTCHA->getScript();
 	}
 }
+function my_post_queries( $query ) {
+  if (!is_admin() && $query->is_main_query()){
+    if(is_search()){
+      $query->set('posts_per_page', 20);
+    }
+  }
+}
+function onMailError( $wp_error ) {
+    echo "<pre>";
+    print_r($wp_error);
+    echo "</pre>";
+}   
+function new_mail_from($old) {
+	return 'admin@voxcharta.org';
+}
+function new_mail_from_name($old) {
+	return 'Vox Charta';
+}
+
+add_action( 'pre_get_posts', 'my_post_queries' );
 add_filter('map_meta_cap', 'allow_user_to_edit_comment', 10, 4 );
 add_action('wp_head', 'apply_portal');
 add_action( 'template_redirect', 'my_page_template_redirect' );
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
+add_action('wp_mail_from', 'new_mail_from');
+add_action('wp_mail_from_name', 'new_mail_from_name');
+add_action( 'wp_mail_failed', 'onMailError', 10, 1 );  // show wp_mail() errors
 remove_filter('the_content', 'wptexturize');
