@@ -1630,5 +1630,5 @@ add_action( 'template_redirect', 'my_page_template_redirect' );
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 add_action('wp_mail_from', 'new_mail_from');
 add_action('wp_mail_from_name', 'new_mail_from_name');
-add_action( 'wp_mail_failed', 'onMailError', 10, 1 );  // show wp_mail() errors
+// add_action( 'wp_mail_failed', 'onMailError', 10, 1 );  // show wp_mail() errors
 remove_filter('the_content', 'wptexturize');
