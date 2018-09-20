@@ -1212,8 +1212,8 @@ function display_vote_info($postID, $userID) {
 		} else {
 			$votelink = "href=\"javascript:vote('votecount{$postID}','Voted!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\"";
 			$sinklink = "href=\"javascript:sink('votecount{$postID}','Voted!',{$postID},{$userID},'".VoteItUp_ExtPath()."','{$today}','{$ishome}');\"";
-			echo "<a {$votelink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon' alt='Promote this paper'><span class='votelinkspace'></span>Promote</a>&nbsp;";
-			echo "<a {$sinklink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon' alt='Demote this paper'><span class='votelinkspace'></span>Demote</a></span>";
+			echo "<a {$votelink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbup.png' class='voteicon' alt='Mark this paper to be discussed'><span class='votelinkspace'></span>Discuss</a>&nbsp;";
+			echo "<a {$sinklink}><img src='https://voxcharta.org/wp-content/plugins/vote-it-up/thumbdown.png' class='voteicon' alt='Mark this paper to not be discussed'><span class='votelinkspace'></span>Don't Discuss</a></span>";
 			if (time() > $close_time  && $institution->closevoting == 1) { 
 				$disc_time = GetResetTime($disc_end_time + 86400*AgendaOffset('next', 'co', $disc_end_time+1));
 				echo "<br><span class='voteclosed'>Note: Voting has closed, votes will count towards the ".date("n/j/Y", $disc_time)." discussion.</span><br>";
